@@ -3,7 +3,7 @@ import { ApplyOptions } from '@sapphire/decorators';
 import { ApplicationCommandOptionType, ApplicationIntegrationType, ChannelType, ChatInputCommandInteraction, InteractionContextType, MessageFlags, PermissionFlagsBits, TextChannel, type APIApplicationCommandChannelOption, type ApplicationCommandData, type ApplicationCommandOptionData } from 'discord.js';
 
 @ApplyOptions<Command.Options>({
-    description: 'Set a slowmode for a chennl.',
+    description: 'Set the slowmode duration for a channel.',
     requiredUserPermissions: [ PermissionFlagsBits.ManageMessages ]
 })
 export class ModerationSlowmode extends Command {
@@ -11,7 +11,7 @@ export class ModerationSlowmode extends Command {
         {
             type: ApplicationCommandOptionType.Number,
             name: 'duration',
-            description: "How long the slowmode should be.",
+            description: "How long the slowmode duration should be.",
             required: true,
         },
         {

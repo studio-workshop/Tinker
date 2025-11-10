@@ -1,4 +1,4 @@
-import { type Message, StringSelectMenuBuilder, Events, type SelectMenuComponentOptionData, ActionRowBuilder, ButtonBuilder, ButtonStyle, GuildMember, type GuildBasedChannel, PermissionFlagsBits, User, type Channel, ChannelType, EmbedBuilder, Colors } from 'discord.js';
+import { type Message, Events, ActionRowBuilder, ButtonBuilder, ButtonStyle } from 'discord.js';
 import { Listener } from '@sapphire/framework';
 import { ApplyOptions } from '@sapphire/decorators';
 import { fetchMessage, generateMessageEmbed, parseMessageLinks } from '#/lib/util/message-embeds';

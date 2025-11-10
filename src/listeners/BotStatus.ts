@@ -2,7 +2,7 @@ import { Listener } from '@sapphire/framework';
 import { ApplyOptions } from '@sapphire/decorators';
 import { type Client, type ActivityOptions, Events, ActivityType } from 'discord.js';
 import { BotStatusCycle, ExperienceUniverseID } from '#/lib/types/enums';
-import { ClassicGamesApi, ClassicUniversesApi } from 'openblox/classic';
+import { ClassicGamesApi } from 'openblox/classic';
 
 @ApplyOptions<Listener.Options>({
 	event: Events.ClientReady,
@@ -10,7 +10,7 @@ import { ClassicGamesApi, ClassicUniversesApi } from 'openblox/classic';
 })
 export class BotStatus extends Listener {
     private activity: ActivityOptions = { type: ActivityType.Custom, name: '' };
-    private currentStatus: BotStatusCycle = BotStatusCycle.OaklandsPlaying;
+    private currentStatus: BotStatusCycle = BotStatusCycle.UntitledProjectPlaying;
 
     private async fetchPlayers(universeId: ExperienceUniverseID) {
         const { data } = await ClassicGamesApi.universesInfo({ universeIds: [ universeId ] });
@@ -21,31 +21,13 @@ export class BotStatus extends Listener {
 
     public async statusRun(client: Client) {
         switch (this.currentStatus) {
-            case BotStatusCycle.OaklandsPlaying:
-                this.currentStatus = BotStatusCycle.VoxelBlockBuilderPlaying;
+            case BotStatusCycle.UntitledProjectPlaying:
+//                this.currentStatus = BotStatusCycle.VoxelBlockBuilderPlaying;
                 
-                const oaklandsPlayers = await this.fetchPlayers(ExperienceUniverseID.Oaklands);
+                const oaklandsPlayers = await this.fetchPlayers(ExperienceUniverseID.Untitled_Project);
                 if (!oaklandsPlayers) break;
 
                 this.activity.name = `Oaklands・${oaklandsPlayers} playing`;
-
-                break;
-            case BotStatusCycle.VoxelBlockBuilderPlaying:
-                this.currentStatus = BotStatusCycle.BuildWithBlocksPlaying;
-
-                const voxelBlockBuilderPlayers = await this.fetchPlayers(ExperienceUniverseID.VoxelBlockBuilder);
-                if (!voxelBlockBuilderPlayers) break;
-
-                this.activity.name = `Voxel Block Builder・${voxelBlockBuilderPlayers} playing`;
-
-                break;
-            case BotStatusCycle.BuildWithBlocksPlaying:
-                this.currentStatus = BotStatusCycle.OaklandsPlaying;
-
-                const buildWithBlocksPlayers = await this.fetchPlayers(ExperienceUniverseID.BuildWithBlocks);
-                if (!buildWithBlocksPlayers) break;
-
-                this.activity.name = `Build With Blocks・${buildWithBlocksPlayers} playing`;
 
                 break;
         }

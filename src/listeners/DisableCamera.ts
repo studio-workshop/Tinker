@@ -1,6 +1,7 @@
 import { Listener } from '@sapphire/framework';
 import { ApplyOptions } from '@sapphire/decorators';
-import { Events, VoiceState } from 'discord.js';
+import { Events, Guild, VoiceState } from 'discord.js';
+import { GuildIds } from '#/lib/types/enums';
 
 @ApplyOptions<Listener.Options>({
     event: Events.VoiceStateUpdate,
@@ -8,8 +9,7 @@ import { Events, VoiceState } from 'discord.js';
 })
 export class DisableCamera extends Listener {
     public override async run(_: VoiceState, current: VoiceState) {
-        // if (current.guild.id !== '1230591981579669566') return;
-        if (current.guild.id !== '865737627712749579') return;
+        if (current.guild.id !== GuildIds.Main ) return;
 
         if (!current.selfVideo) return;
         await current.disconnect('Member enabled self video.');

@@ -1,15 +1,11 @@
 export const enum BotStatusCycle {
-    OaklandsPlaying = 'OAKLANDS_PLAYING',
-    DisasterDefensePlayng = 'DISASTER_DEFENSE_PLAYING',
-    SprayPaintDeluxePlaying = 'SPRAY_PAINT_PLAYING',
-    VoxelBlockBuilderPlaying = 'VOXEL_BLOCK_BUILDER_PLAYING',
-    BuildWithBlocksPlaying = 'BUILD_WITH_BLOCKS_PLAYING',
+    UntitledProjectPlaying = 'UNTITLED_PLAYING',
+};
+
+export const enum GuildIds {
+    Main = '1218491908238606346',
 };
 
 export const enum ExperienceUniverseID {
-    Oaklands = 3666294218,
-    DisasterDefense = 5972791957,
-    SprayPaintDeluxe = 4861034688,
-    VoxelBlockBuilder = 8006379851,
-    BuildWithBlocks = 8827949529,
+    Untitled_Project = 3666294218,
 };
